@@ -1,0 +1,15 @@
+{
+    "name": "rahamatj/kaiju",
+    "description": "A markdown powered blog for the Laravel framework",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rahamat Jahan",
+            "email": "rahamatjahan92@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "orchestra/testbench": "^3.8"
+    }
+}
