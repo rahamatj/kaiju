@@ -8,8 +8,20 @@
             "email": "rahamatjahan92@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "erusev/parsedown": "^1.7"
+    },
     "require-dev": {
         "orchestra/testbench": "^3.8"
+    },
+    "autoload" : {
+        "psr-4" : {
+            "Rahamatj\\Kaiju\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rahamatj\\Kaiju\\Tests\\": "tests/"
+        }
     }
 }
