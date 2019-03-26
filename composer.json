@@ -12,7 +12,8 @@
         "erusev/parsedown": "^1.7"
     },
     "require-dev": {
-        "orchestra/testbench": "^3.8"
+        "orchestra/testbench": "^3.8",
+        "mockery/mockery": "^1.2"
     },
     "autoload" : {
         "psr-4" : {

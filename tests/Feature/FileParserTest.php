@@ -4,7 +4,6 @@ namespace Rahamatj\Kaiju\Tests;
 
 use Carbon\Carbon;
 use Rahamatj\Kaiju\FileParser;
-use Orchestra\Testbench\TestCase;
 
 class FileParserTest extends TestCase
 {

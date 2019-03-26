@@ -2,7 +2,6 @@
 
 namespace Rahamatj\Kaiju\Tests;
 
-use Orchestra\Testbench\TestCase;
 use Rahamatj\Kaiju\MarkdownParser;
 
 class MarkdownTest extends TestCase
