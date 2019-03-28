@@ -32,6 +32,7 @@ class KaijuServiceProvider extends ServiceProvider
 
         $this->registerFacades();
         $this->registerRoutes();
+        $this->registerFields();
     }
 
     protected function registerPublishing()
@@ -61,5 +62,17 @@ class KaijuServiceProvider extends ServiceProvider
         $this->app->singleton('Kaiju', function ($app) {
             return new \Rahamatj\Kaiju\Kaiju;
         });
+    }
+
+    protected function registerFields()
+    {
+        Kaiju::fields([
+            Fields\Author::class,
+            Fields\Body::class,
+            Fields\Date::class,
+            Fields\Description::class,
+            Fields\Extra::class,
+            Fields\Title::class,
+        ]);
     }
 }

@@ -14,4 +14,9 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $guarded = ['id'];
+
+    public function extra($field)
+    {
+        return optional(json_decode($this->extra))->field;
+    }
 }

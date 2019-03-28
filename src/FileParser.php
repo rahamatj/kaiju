@@ -4,6 +4,8 @@ namespace Rahamatj\Kaiju;
 
 use Str;
 use File;
+use ReflectionClass;
+use Rahamatj\Kaiju\Facades\Kaiju;
 use Rahamatj\Kaiju\Fields\Processor;
 
 class FileParser
@@ -54,7 +56,8 @@ class FileParser
     {
         $extraData = [];
         foreach ($this->data as $field => $value) {
-            $fieldClass = 'Rahamatj\\Kaiju\\Fields\\' . Str::title($field);
+            $fieldClass = $this->getFieldClass($field);
+
             if(class_exists($fieldClass)) {
                 $processor = new Processor(new $fieldClass);
 
@@ -74,6 +77,22 @@ class FileParser
 
         if(!empty($extraData)) {
             $this->data['extra'] = json_encode($extraData);
+        }
+    }
+
+    /**
+     * @param $field
+     * @return mixed
+     */
+    protected function getFieldClass($field)
+    {
+        foreach (Kaiju::availableFields() as $availableField) {
+            $class = new ReflectionClass($availableField);
+
+            if($class->getShortName() == Str::title($field))
+            {
+                return $class->getName();
+            }
         }
     }
 }

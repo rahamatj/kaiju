@@ -6,6 +6,8 @@ use Str;
 
 class Kaiju
 {
+    protected $fields = [];
+
     public function configNotPublished()
     {
         return is_null(config('kaiju'));
@@ -22,5 +24,15 @@ class Kaiju
     public function path()
     {
         return config('kaiju.path', 'blogs');
+    }
+
+    public function fields($fields)
+    {
+        $this->fields = array_merge($this->fields, $fields);
+    }
+
+    public function availableFields()
+    {
+        return $this->fields;
     }
 }

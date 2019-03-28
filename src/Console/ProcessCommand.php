@@ -3,8 +3,6 @@
 namespace Rahamatj\Kaiju\Console;
 
 use Str;
-use Rahamatj\Kaiju\Post;
-use Rahamatj\Kaiju\FileParse;
 use Illuminate\Console\Command;
 use Rahamatj\Kaiju\Facades\Kaiju;
 use Rahamatj\Kaiju\Repositories\PostRepository;
