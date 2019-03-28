@@ -33,6 +33,6 @@ class Kaiju
 
     public function availableFields()
     {
-        return $this->fields;
+        return array_reverse($this->fields);
     }
 }

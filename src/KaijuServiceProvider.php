@@ -40,6 +40,10 @@ class KaijuServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/kaiju.php' => config_path('kaiju.php')
         ], 'kaiju-config');
+
+        $this->publishes([
+            __DIR__.'/../stubs/KaijuServiceProvider.stub' => app_path('Providers/KaijuServiceProvider.php')
+        ], 'kaiju-provider');
     }
 
     protected function registerRoutes()
