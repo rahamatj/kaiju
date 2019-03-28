@@ -7,6 +7,7 @@ use Rahamatj\Kaiju\Post;
 use Rahamatj\Kaiju\FileParse;
 use Illuminate\Console\Command;
 use Rahamatj\Kaiju\Facades\Kaiju;
+use Rahamatj\Kaiju\Repositories\PostRepository;
 
 class ProcessCommand extends Command
 {
@@ -14,7 +15,7 @@ class ProcessCommand extends Command
 
     protected $description = 'Update blog posts';
 
-    public function handle()
+    public function handle(PostRepository $postRepository)
     {
         if(Kaiju::configNotPublished())
         {
@@ -26,17 +27,11 @@ class ProcessCommand extends Command
         try {
             $posts = Kaiju::driver()->fetchPosts();
 
+            $this->info('Number of posts: ' . count($posts));
+
             foreach ($posts as $post) {
-                Post::create([
-                    'identifier' => $post['identifier'],
-                    'slug' => Str::slug($post['title']),
-                    'title' => $post['title'],
-                    'author' => $post['author'] ?? null,
-                    'date' => isset($post['date']) ? $post['date']->toDateTimeString() : null,
-                    'description' => $post['description'] ?? null,
-                    'body' => $post['body'],
-                    'extra' => $post['extra'] ?? null
-                ]);
+                $postRepository->save($post);
+                $this->info('Post: ' . $post['title']);
             }
         } catch (\Exception $e) {
             $this->error($e->getMessage());
