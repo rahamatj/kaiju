@@ -3,7 +3,7 @@
 namespace Rahamatj\Kaiju\Fields;
 
 
-class Extra extends Field
+class Author extends Field
 {
 
 }

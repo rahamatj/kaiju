@@ -75,7 +75,5 @@ class FileParser
         if(!empty($extraData)) {
             $this->data['extra'] = json_encode($extraData);
         }
-
-        dd($this->data);
     }
 }

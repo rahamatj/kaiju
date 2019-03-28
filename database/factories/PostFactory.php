@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: rahamatj
- * Date: 3/26/19
- * Time: 10:21 AM
- */
 
 use Rahamatj\Kaiju\Post;
 use Illuminate\Support\Str;
