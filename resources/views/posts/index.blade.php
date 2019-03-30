@@ -1,6 +1,6 @@
 @extends('kaiju::layout')
 
-@section('title', $title)
+@section('title', $type)
 
 @section('header')
     @include('kaiju::includes.header')
@@ -10,7 +10,7 @@
 <section class="list">
     @foreach ($posts as $post)
     <div class="item">
-        <a class="url" href="{{ route('blog.show', [
+        <a class="url" href="{{ route(\Str::slug($type) . '.show', [
             'post' => $post
         ]) }}">
             <aside class="date"><time datetime="{{ $post->date()->format('d-m-Y') }}">{{ $post->date()->format('M d Y') }}</time></aside>

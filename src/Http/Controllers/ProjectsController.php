@@ -19,7 +19,7 @@ class ProjectsController extends Controller
         $posts = new Paginator($posts, 10);
 
         return view('kaiju::posts.index', [
-            'title' => 'Projects',
+            'type' => 'Projects',
             'posts' => $posts
         ]);
     }

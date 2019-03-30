@@ -5,17 +5,20 @@ A markdown powered portfolio/blog package for the Laravel framework.
 ## Features
 - Powered by [Laravel](https://laravel.com),
 - Uses markdown files to create/update blogs/projects,
-- Uses SQLite for database
+- Uses SQLite for database,
 - Uses assets and compiled html/css from [Indigo](https://github.com/sergiokopplin/indigo).
 
 ## Set up
-- `composer create-project --prefer-dist laravel/laravel blog`,
-- `composer require rahamatj/kaiju`,
+- `composer create-project --prefer-dist laravel/laravel blog`
+- `composer require rahamatj/kaiju`
+
 - Open the project on your browser and go to the path `/kaiju/install` and follow along.
+
 Or,
-- `php artisan kaiju:install`,
-- `php artisan migrate`,
-- `php artisan kaiju:roar`.
+
+- `php artisan kaiju:install`
+- `php artisan migrate`
+- `php artisan kaiju:roar`
 
 ## How to
 - Set your name, bio, picture, socials and other information in `config/kaiju.php`.
@@ -24,7 +27,7 @@ Or,
 Use full url in case of external images.
 
 - Place your blog posts and projects inside `kaiju/posts` folder.
-- Example post.md
+- Example `post.md`
 ```
 ---
 title: My title
@@ -33,7 +36,7 @@ description: My description
 
 # Hello
 ```
-- Example project.md
+- Example `project.md`
 ```
 ---
 title: My project
@@ -91,11 +94,11 @@ class Author extends Field
 - Register new field classes inside `registerFields()` method of `app/Providers/KaijuServiceProvider.php` class.
 ```
 protected function registerFields()
-    {
-        return [
-            \App\Fields\Author::class
-        ];
-    }
+{
+    return [
+        \App\Fields\Author::class
+    ];
+}
 ```
 
 - Then in your `post.md` file add a new field
@@ -108,7 +111,7 @@ author: John Doe
 # Hello
 ```
 
-If you don't create or register your field classes any unknown fields added in your markdown files' head section will be added to the database as a json object stored under a field called `extra`. And you can access any unknown fields like `$post->extra()->unknown_field`
+If you don't create or register your field classes, any new fields added in your markdown file's head section will be added to the database as a json object stored under a field called `extra`. And you can access any the fields like `$post->extra()->field`
 ```
 title: My title
 description: My description
@@ -123,6 +126,6 @@ echo $post->extra()->kaiju; // roar
 ```
 
 ### Override views
-If you wish to override package views place your views inside `resources/views/vendor/kaiju` folder. Follow the package views folder structure.
+If you wish to override package views, place your views inside `resources/views/vendor/kaiju` folder. Follow the package views folder structure.
 
-For example if you want to override the pagination view. Simply create a new blade file called `resources/views/vendor/kaiju/includes/pagination.blade.php` and place your code there.
+For example, if you want to override the pagination view, simply create a new blade file called `resources/views/vendor/kaiju/includes/pagination.blade.php` and place your code there.

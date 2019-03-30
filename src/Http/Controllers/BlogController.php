@@ -19,7 +19,7 @@ class BlogController extends Controller
         $posts = new Paginator($posts, 10);
 
         return view('kaiju::posts.index', [
-            'title' => 'Blog',
+            'type' => 'Blog',
             'posts' => $posts
         ]);
     }
