@@ -9,7 +9,7 @@ class FileDriver extends Driver
 {
     public function fetchPosts()
     {
-        $files = File::files($this->config['path']);
+        $files = File::files(base_path($this->config['path']));
 
         foreach($files as $file) {
             $this->parse($file->getPathName(), $file->getFileName());
@@ -20,7 +20,7 @@ class FileDriver extends Driver
 
     protected function validateSource()
     {
-        if (! File::exists($this->config['path']))
+        if (! File::exists(base_path($this->config['path'])))
         {
             throw new FileDriverDirectoryNotFoundException(
                 'Directory at \'' . $this->config['path'] . '\' does not exist.' .

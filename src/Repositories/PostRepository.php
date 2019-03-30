@@ -16,8 +16,6 @@ class PostRepository
             [
                 'slug' => Str::slug($post['title']),
                 'title' => $post['title'],
-                'author' => $post['author'] ?? null,
-                'date' => isset($post['date']) ? $post['date']->toDateTimeString() : null,
                 'description' => $post['description'] ?? null,
                 'body' => $post['body'],
                 'extra' => $post['extra'] ?? null

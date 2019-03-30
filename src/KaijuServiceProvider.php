@@ -22,7 +22,8 @@ class KaijuServiceProvider extends ServiceProvider
     public function register()
     {
         $this->commands([
-            Console\ProcessCommand::class
+            Console\ProcessCommand::class,
+            Console\InstallCommand::class
         ]);
 
         $this->app->booting(function() {
@@ -57,6 +58,10 @@ class KaijuServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../public/assets' => public_path('vendor/kaiju/assets'),
         ], 'kaiju-assets');
+
+        $this->publishes([
+            __DIR__.'/../kaiju' => base_path('kaiju'),
+        ], 'kaiju-posts');
     }
 
     protected function registerFacades()
