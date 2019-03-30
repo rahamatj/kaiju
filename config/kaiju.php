@@ -40,6 +40,18 @@ return [
         'email' => 'myemail@gmail.com',
     ],
 
+    // if you don't need projects, set 'projects' to false below
+    'projects' => true,
+
+    // about file path
+    'about' => 'kaiju/about.md',
+
+    // If you want to include your resume, set to true
+    // and specify source (external or local).
+    'resume' => true,
+    'resume-external' => true,
+    'resume-url' => 'https://google.com/?q=my+resume',
+
     // driver to load blogs
     'driver' => 'file',
     
@@ -48,6 +60,6 @@ return [
     
     // driver configurations
     'file' => [
-        'path' => 'blogs'
+        'path' => 'kaiju/posts'
     ]
 ];

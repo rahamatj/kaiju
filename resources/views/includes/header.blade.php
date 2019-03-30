@@ -2,7 +2,9 @@
 
     <a class="link" href="http://localhost:4000/about">
         <img class="selfie" alt="{{ config('kaiju.name') }}"
-            src="{{ asset('vendor/kaiju/assets') . '/' . config('kaiju.picture') }}" />
+            src="{{ config('kaiju.external-image') 
+                ? config('kaiju.picture') 
+                : asset('vendor/kaiju/assets') . '/' . config('kaiju.picture') }}" />
     </a>
 
     <h1 class="title">{{ config('kaiju.name') }}</h1>

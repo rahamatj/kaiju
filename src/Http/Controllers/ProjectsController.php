@@ -6,14 +6,14 @@ use Rahamatj\Kaiju\Post;
 use Illuminate\Routing\Controller;
 use Illuminate\Pagination\Paginator;
 
-class BlogController extends Controller
+class ProjectsController extends Controller
 {
     public function index()
     {
         $posts = Post::orderBy('id', 'desc')->get();
 
         $posts = $posts->filter(function($post) {
-            return ! $post->extra()->is_project;
+            return $post->extra()->is_project;
         });
 
         $posts = new Paginator($posts, 10);
@@ -23,10 +23,8 @@ class BlogController extends Controller
         ]);
     }
 
-    public function show(Post $post)
+    public function show()
     {
-        return view('kaiju::posts.show', [
-            'post' => $post
-        ]);
+
     }
 }

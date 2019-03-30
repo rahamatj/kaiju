@@ -14,9 +14,9 @@ class Post extends Model
         return 'slug';
     }
 
-    public function extra($field)
+    public function extra()
     {
-        return optional(json_decode($this->extra))->field;
+        return optional(json_decode($this->extra));
     }
 
     public function date()
