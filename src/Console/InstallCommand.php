@@ -26,8 +26,8 @@ class InstallCommand extends Command
         $this->callSilent('vendor:publish', [ '--tag' => 'kaiju-posts' ]);
 
         $this->info('Creating database ...');
-        $env = File::get('.env');
-        File::put('.env', str_replace(
+        $env = File::get(base_path('.env'));
+        File::put(base_path('.env'), str_replace(
             [
                 'DB_CONNECTION=mysql',
                 'DB_HOST=127.0.0.1',
@@ -46,7 +46,10 @@ class InstallCommand extends Command
             ],
             $env
         ));
-        touch('database/database.sqlite');
+
+        if(! File::exists(base_path('database/database.sqlite'))) {
+            touch('database/database.sqlite');
+        }
 
         $this->info('Migrating database ...');
         $this->callSilent('migrate');
@@ -54,7 +57,15 @@ class InstallCommand extends Command
         $this->info('Roaring ...');
         $this->callSilent('kaiju:roar');
 
+        $this->info('Closing installation ...');
+        $config = File::get(base_path('config/kaiju.php'));
+        File::put(base_path('config/kaiju.php'), str_replace(
+            "'install-route' => true,",
+            "'install-route' => false,",
+            $config
+        ));
+
         $this->info('');
-        $this->info('Installation complete! Enjoy!');
+        $this->info('Roar! Kaiju installed successfully! Enjoy!');
     }
 }

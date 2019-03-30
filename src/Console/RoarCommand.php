@@ -7,7 +7,7 @@ use Illuminate\Console\Command;
 use Rahamatj\Kaiju\Facades\Kaiju;
 use Rahamatj\Kaiju\Repositories\PostRepository;
 
-class ProcessCommand extends Command
+class RoarCommand extends Command
 {
     protected $signature = 'kaiju:roar';
 
@@ -21,6 +21,8 @@ class ProcessCommand extends Command
                 'Please publish the config file by running \'php artisan vendor:publish --tag=kaiju-config\''
             );
         }
+
+        $this->info('Roaring ...');
 
         try {
             $posts = Kaiju::driver()->fetchPosts();

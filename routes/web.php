@@ -14,3 +14,9 @@ if(config('kaiju.about'))
 {
     Route::get('about', 'AboutController@index')->name('about');
 }
+
+Route::get('kaiju/roar', 'RoarController@index')->name('kaiju.roar');
+
+if (config('kaiju.install-route')) {
+    Route::get('kaiju/install', 'InstallController@index')->name('kaiju.install');
+}

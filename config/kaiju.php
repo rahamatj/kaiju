@@ -2,7 +2,10 @@
 
 return [
     // your url: https://name.com
-    'url' => 'https://koppl.in/indigo',
+    'url' => 'https://name.com',
+
+    // set the install-route to false after you're done installing.
+    'install-route' => true, 
 
     // main text of home
     'name' => 'John Doe',

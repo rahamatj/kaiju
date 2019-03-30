@@ -1,6 +1,6 @@
 {
     "name": "rahamatj/kaiju",
-    "description": "A markdown powered blog for the Laravel framework",
+    "description": "A markdown powered portfolio/blog package for the Laravel framework.",
     "license": "MIT",
     "authors": [
         {

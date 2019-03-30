@@ -22,7 +22,7 @@ class KaijuServiceProvider extends ServiceProvider
     public function register()
     {
         $this->commands([
-            Console\ProcessCommand::class,
+            Console\RoarCommand::class,
             Console\InstallCommand::class
         ]);
 
@@ -62,6 +62,10 @@ class KaijuServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../kaiju' => base_path('kaiju'),
         ], 'kaiju-posts');
+
+        $this->publishes([
+            __DIR__.'/../database/migrations' => base_path('database/migrations'),
+        ], 'kaiju-migrations');
     }
 
     protected function registerFacades()
