@@ -1,6 +1,6 @@
 <header class="header-home animated">
 
-    <a class="link" href="http://localhost:4000/about">
+    <a class="link" href="{{ route('about') }}">
         <img class="selfie" alt="{{ config('kaiju.name') }}"
             src="{{ config('kaiju.external-image') 
                 ? config('kaiju.picture') 

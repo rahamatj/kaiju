@@ -19,12 +19,15 @@ class ProjectsController extends Controller
         $posts = new Paginator($posts, 10);
 
         return view('kaiju::posts.index', [
+            'title' => 'Projects',
             'posts' => $posts
         ]);
     }
 
-    public function show()
+    public function show(Post $post)
     {
-
+        return view('kaiju::posts.show', [
+            'post' => $post
+        ]);
     }
 }

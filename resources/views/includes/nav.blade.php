@@ -15,9 +15,11 @@
         </li>
         @endif
 
+        @if(config('kaiju.about'))
         <li class="item" style="{{ basename(request()->path()) == 'about' ? 'display:none;' : '' }}">
-            <a class="link" href="http://localhost:4000/about">About</a>
+            <a class="link" href="{{ route('about') }}">About</a>
         </li>
+        @endif
 
         @if(config('kaiju.resume'))
         <li class="item" style="{{ basename(request()->path()) == 'resume' ? 'display:none;' : '' }}">

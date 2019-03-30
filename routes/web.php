@@ -9,3 +9,8 @@ if(config('kaiju.projects'))
     Route::get('projects', 'ProjectsController@index')->name('projects');
     Route::get('projects/{post}', 'ProjectsController@show')->name('projects.show');
 }
+
+if(config('kaiju.about'))
+{
+    Route::get('about', 'AboutController@index')->name('about');
+}

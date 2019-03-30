@@ -1,6 +1,6 @@
 @extends('kaiju::layout')
 
-@section('title', 'Blog')
+@section('title', $post->title)
 
 @section('content')
 <h1 class="title">{{ $post->title }}</h1>

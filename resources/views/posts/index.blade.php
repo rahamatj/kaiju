@@ -1,6 +1,6 @@
 @extends('kaiju::layout')
 
-@section('title', 'Blog')
+@section('title', $title)
 
 @section('header')
 @include('kaiju::includes.header')
@@ -8,7 +8,6 @@
 
 @section('content')
 <section class="list">
-
     @foreach ($posts as $post)
     <div class="item">
         <a class="url" href="{{ route('blog.show', [
