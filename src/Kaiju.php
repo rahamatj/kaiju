@@ -21,9 +21,9 @@ class Kaiju
         return new $class;
     }
 
-    public function path()
+    public function routePrefix()
     {
-        return config('kaiju.path', 'blogs');
+        return config('kaiju.route-prefix', '/');
     }
 
     public function fields($fields)
@@ -34,5 +34,13 @@ class Kaiju
     public function availableFields()
     {
         return array_reverse($this->fields);
+    }
+
+    public function routes()
+    {
+        Routes::register([
+            'prefix' => $this->routePrefix(),
+            'namespace' => '\Rahamatj\Kaiju\Http\Controllers'
+        ]);
     }
 }

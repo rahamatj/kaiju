@@ -4,6 +4,7 @@ namespace Rahamatj\Kaiju;
 
 use Route;
 use Rahamatj\Kaiju\Facades\Kaiju;
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 
 class KaijuServiceProvider extends ServiceProvider
@@ -23,6 +24,11 @@ class KaijuServiceProvider extends ServiceProvider
         $this->commands([
             Console\ProcessCommand::class
         ]);
+
+        $this->app->booting(function() {
+            $loader = AliasLoader::getInstance();
+            $loader->alias('Kaiju', Kaiju::class);
+        });
     }
 
     protected function registerResources()
@@ -31,7 +37,6 @@ class KaijuServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'kaiju');
 
         $this->registerFacades();
-        $this->registerRoutes();
         $this->registerFields();
     }
 
@@ -44,21 +49,14 @@ class KaijuServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../stubs/KaijuServiceProvider.stub' => app_path('Providers/KaijuServiceProvider.php')
         ], 'kaiju-provider');
-    }
 
-    protected function registerRoutes()
-    {
-        Route::group($this->routeConfiguration(), function() {
-            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-        });
-    }
+        $this->publishes([
+            __DIR__.'/../stubs/KaijuServiceProvider.stub' => base_path('routes/web.php')
+        ], 'kaiju-routes');
 
-    protected function routeConfiguration()
-    {
-        return [
-            'prefix' => Kaiju::path(),
-            'namespace' => 'Rahamatj\Kaiju\Http\Controllers'
-        ];
+        $this->publishes([
+            __DIR__.'/../public/assets' => public_path('vendor/kaiju/assets'),
+        ], 'kaiju-assets');
     }
 
     protected function registerFacades()
@@ -71,9 +69,9 @@ class KaijuServiceProvider extends ServiceProvider
     protected function registerFields()
     {
         Kaiju::fields([
-            Fields\Author::class,
+            // Fields\Author::class,
             Fields\Body::class,
-            Fields\Date::class,
+            // Fields\Date::class,
             Fields\Description::class,
             Fields\Extra::class,
             Fields\Title::class,
