@@ -14,16 +14,16 @@ class InstallCommand extends Command
     public function handle()
     {
         $this->info('Publishing config ...');
-        $this->callSilent('vendor:publish', [ '--tag' => 'kaiju-config' ]);
+        $this->callSilent('vendor:publish', [ '--tag' => 'kaiju-config', '--force' => true ]);
 
         $this->info('Publishing routes ...');
-        $this->callSilent('vendor:publish', [ '--tag' => 'kaiju-routes' ]);
+        $this->callSilent('vendor:publish', [ '--tag' => 'kaiju-routes', '--force' => true ]);
 
         $this->info('Publishing assets ...');
-        $this->callSilent('vendor:publish', [ '--tag' => 'kaiju-assets' ]);
+        $this->callSilent('vendor:publish', [ '--tag' => 'kaiju-assets', '--force' => true ]);
 
         $this->info('Publishing posts ...');
-        $this->callSilent('vendor:publish', [ '--tag' => 'kaiju-posts' ]);
+        $this->callSilent('vendor:publish', [ '--tag' => 'kaiju-posts', '--force' => true ]);
 
         $this->info('Creating database ...');
         $env = File::get(base_path('.env'));
@@ -48,24 +48,11 @@ class InstallCommand extends Command
         ));
 
         if(! File::exists(base_path('database/database.sqlite'))) {
-            touch('database/database.sqlite');
+            touch(base_path('database/database.sqlite'));
         }
-
-        $this->info('Migrating database ...');
-        $this->callSilent('migrate');
-
-        $this->info('Roaring ...');
-        $this->callSilent('kaiju:roar');
-
-        $this->info('Closing installation ...');
-        $config = File::get(base_path('config/kaiju.php'));
-        File::put(base_path('config/kaiju.php'), str_replace(
-            "'install-route' => true,",
-            "'install-route' => false,",
-            $config
-        ));
 
         $this->info('');
         $this->info('Roar! Kaiju installed successfully! Enjoy!');
+        $this->info('Run \'php artisan migrate\' to migrate database.');
     }
 }

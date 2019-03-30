@@ -80,10 +80,11 @@
         <div class="{{ request()->is('blog/post/*') ? 'post' : 'page' }} {{ basename(request()->path()) ?: 'home' }}">
 
             @yield('header')
+
             @include('kaiju::includes.nav')
-
+        
             @yield('content')
-
+        
             @include('kaiju::includes.footer')
 
         </div>

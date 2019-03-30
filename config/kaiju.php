@@ -4,8 +4,8 @@ return [
     // your url: https://name.com
     'url' => 'https://name.com',
 
-    // set the install-route to false after you're done installing.
-    'install-route' => true, 
+    // set the block-installation-route to true after you're done installing.
+    'block-installation-route' => false,
 
     // main text of home
     'name' => 'John Doe',

@@ -3,6 +3,7 @@
 namespace Rahamatj\Kaiju;
 
 use Str;
+use Rahamatj\Kaiju\Facades\Routes;
 
 class Kaiju
 {
@@ -21,11 +22,6 @@ class Kaiju
         return new $class;
     }
 
-    public function routePrefix()
-    {
-        return config('kaiju.route-prefix', '/');
-    }
-
     public function fields($fields)
     {
         $this->fields = array_merge($this->fields, $fields);
@@ -38,9 +34,11 @@ class Kaiju
 
     public function routes()
     {
-        Routes::register([
-            'prefix' => $this->routePrefix(),
-            'namespace' => '\Rahamatj\Kaiju\Http\Controllers'
-        ]);
+        Routes::register('web');
+    }
+
+    public function installRoutes()
+    {
+        Routes::register('install-routes');
     }
 }

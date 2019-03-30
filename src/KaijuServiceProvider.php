@@ -11,11 +11,7 @@ class KaijuServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        if($this->app->runningInConsole())
-        {
-            $this->registerPublishing();
-        }
-
+        $this->registerPublishing();
         $this->registerResources();
     }
 
@@ -39,6 +35,7 @@ class KaijuServiceProvider extends ServiceProvider
 
         $this->registerFacades();
         $this->registerFields();
+        Kaiju::installRoutes();
     }
 
     protected function registerPublishing()
@@ -52,7 +49,7 @@ class KaijuServiceProvider extends ServiceProvider
         ], 'kaiju-provider');
 
         $this->publishes([
-            __DIR__.'/../stubs/KaijuServiceProvider.stub' => base_path('routes/web.php')
+            __DIR__.'/../stubs/web.stub' => base_path('routes/web.php')
         ], 'kaiju-routes');
 
         $this->publishes([
@@ -72,6 +69,10 @@ class KaijuServiceProvider extends ServiceProvider
     {
         $this->app->singleton('Kaiju', function ($app) {
             return new \Rahamatj\Kaiju\Kaiju;
+        });
+
+        $this->app->singleton('Routes', function ($app) {
+            return new \Rahamatj\Kaiju\Routes;
         });
     }
 

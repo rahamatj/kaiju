@@ -3,5 +3,5 @@
 @section('title', 'Home')
 
 @section('header')
-@include('kaiju::includes.header')
+    @include('kaiju::includes.header')
 @endsection

@@ -3,7 +3,7 @@
 @section('title', $title)
 
 @section('header')
-@include('kaiju::includes.header')
+    @include('kaiju::includes.header')
 @endsection
 
 @section('content')

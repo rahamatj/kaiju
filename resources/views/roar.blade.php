@@ -9,5 +9,6 @@
     @foreach ($posts as $post)
         <p>Post: {{ $post->title }}</p>
     @endforeach
+    <p><a href="{{ route('/') }}">Bring me home!</a></p>
 </section>
 @endsection

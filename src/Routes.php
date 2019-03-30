@@ -6,10 +6,23 @@ use Route;
 
 class Routes
 {
-    public static function register(array $config)
+    public function routePrefix()
     {
-        Route::group($config, function() {
-            include(__DIR__.'/../routes/web.php');
+        return config('kaiju.route-prefix', '/');
+    }
+
+    public function routeConfig()
+    {
+        return [
+            'prefix' => $this->routePrefix(),
+            'namespace' => '\Rahamatj\Kaiju\Http\Controllers'
+        ];
+    }
+
+    public function register($routeFile)
+    {
+        Route::group($this->routeConfig(), function() use ($routeFile) {
+            include(__DIR__.'/../routes/' . $routeFile . '.php');
         });
     }
 
