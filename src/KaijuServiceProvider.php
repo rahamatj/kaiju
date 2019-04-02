@@ -67,12 +67,12 @@ class KaijuServiceProvider extends ServiceProvider
 
     protected function registerFacades()
     {
-        $this->app->singleton('Kaiju', function ($app) {
-            return new \Rahamatj\Kaiju\Kaiju;
+        $this->app->singleton('kaiju-routes', function ($app) {
+            return new \Rahamatj\Kaiju\Routes;
         });
 
-        $this->app->singleton('Routes', function ($app) {
-            return new \Rahamatj\Kaiju\Routes;
+        $this->app->singleton('kaiju', function ($app) {
+            return new \Rahamatj\Kaiju\Kaiju;
         });
     }
 

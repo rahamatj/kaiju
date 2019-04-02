@@ -8,6 +8,6 @@ class Routes extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'Routes';
+        return 'kaiju-routes';
     }
 }

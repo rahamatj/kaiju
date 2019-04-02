@@ -11,7 +11,6 @@ A markdown powered portfolio/blog package for the Laravel framework.
 ## Set up
 - `composer create-project --prefer-dist laravel/laravel blog`
 - `composer require rahamatj/kaiju`
-
 - Open the project on your browser and go to the path `/kaiju/install` and follow along.
 
 Or,
@@ -24,7 +23,7 @@ Or,
 - Set your name, bio, picture, socials and other information in `config/kaiju.php`.
 - Place images inside `public/vendor/kaiju/assets` folder and use image names with paths after `public/vendor/kaiju/assets` in your config file or markdown files. e.g. `'picture' => 'images/profile.jpg'` in your config file or `![example image](images/markdown.jpg "An exemplary image")` in your markdown files.
 
-Use full url in case of external images.
+Use full urls in case of external images.
 
 - Place your blog posts and projects inside `kaiju/posts` folder.
 - Example `post.md`
@@ -111,7 +110,7 @@ author: John Doe
 # Hello
 ```
 
-If you don't create or register your field classes, any new fields added in your markdown file's head section will be added to the database as a json object stored under a field called `extra`. And you can access any the fields like `$post->extra()->field`
+If you don't create or register your field classes, any new fields added in your markdown file's head section will be added to the database as a json object stored under a field called `extra`. And you can access the field like `$post->extra()->field`
 ```
 title: My title
 description: My description
@@ -126,6 +125,6 @@ echo $post->extra()->kaiju; // roar
 ```
 
 ### Override views
-If you wish to override package views, place your views inside `resources/views/vendor/kaiju` folder. Follow the package views folder structure.
+If you wish to override package views, place your views inside `resources/views/vendor/kaiju` folder. Follow the package's `views` folder structure.
 
 For example, if you want to override the pagination view, simply create a new blade file called `resources/views/vendor/kaiju/includes/pagination.blade.php` and place your code there.

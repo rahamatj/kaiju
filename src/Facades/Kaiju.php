@@ -8,6 +8,6 @@ class Kaiju extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'Kaiju';
+        return 'kaiju';
     }
 }
