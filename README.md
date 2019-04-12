@@ -10,6 +10,7 @@ A markdown powered portfolio/blog package for the Laravel framework.
 
 ## Set up
 - `composer create-project --prefer-dist laravel/laravel blog`
+- `cd blog`
 - `composer require rahamatj/kaiju`
 - Open the project on your browser and go to the path `/kaiju/install` and follow along.
 
@@ -18,6 +19,9 @@ Or,
 - `php artisan kaiju:install`
 - `php artisan migrate`
 - `php artisan kaiju:roar`
+
+
+- Set `block-installation-route` to true in the `kaiju` config file after the installation.
 
 ## How to
 - Set your name, bio, picture, socials and other information in `config/kaiju.php`.

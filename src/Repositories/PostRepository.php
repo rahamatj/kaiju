@@ -22,4 +22,21 @@ class PostRepository
             ]
         );
     }
+
+    public function flush($posts)
+    {
+        $identifiers = array_map(function($item) {
+            return $item['identifier'];
+        }, $posts);
+        
+        $postsToBeFlushed = Post::whereNotIn('identifier', $identifiers)->get();
+        
+        $flushedPosts = [];
+        foreach($postsToBeFlushed as $postToBeFlushed) {
+            $flushedPosts[] = $postToBeFlushed->title;
+            $postToBeFlushed->delete();
+        }
+
+        return $flushedPosts;
+    }
 }

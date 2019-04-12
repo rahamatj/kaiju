@@ -27,11 +27,17 @@ class RoarCommand extends Command
         try {
             $posts = Kaiju::driver()->fetchPosts();
 
-            $this->info('Number of posts: ' . count($posts));
+            $this->info('Number of posts saved: ' . count($posts));
 
             foreach ($posts as $post) {
                 $postRepository->save($post);
-                $this->info('Post: ' . $post['title']);
+                $this->info('Post saved: ' . $post['title']);
+            }
+
+            $flushedPosts = $postRepository->flush($posts);
+            $this->info('Number of posts deleted: ' . count($flushedPosts));
+            foreach ($flushedPosts as $flushedPost) {
+                $this->info('Post deleted: ' . $flushedPost);
             }
         } catch (\Exception $e) {
             $this->error($e->getMessage());

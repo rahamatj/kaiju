@@ -8,6 +8,7 @@
             "email": "rahamatjahan92@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "erusev/parsedown": "^1.7"
     },
